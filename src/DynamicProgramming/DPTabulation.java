@@ -2,7 +2,7 @@ package DynamicProgramming;
 
 import java.util.Scanner;
 
-public class DPLevelTwo {
+public class DPTabulation {
 
     public static void targetSumSubset() {
         @SuppressWarnings("resource")

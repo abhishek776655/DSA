@@ -2,7 +2,7 @@ package DynamicProgramming;
 
 import java.util.Scanner;
 
-public class DPLevelOne {
+public class DPMemoization {
 
     public static void FibonaciMemoized() {
         @SuppressWarnings("resource")

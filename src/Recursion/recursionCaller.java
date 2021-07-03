@@ -1,6 +1,6 @@
 package Recursion;
 
-public class rootCaller {
+public class recursionCaller {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
