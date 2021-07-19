@@ -99,4 +99,99 @@ public class DPIncludeExclude {
         System.out.println(abc);
     }
 
+    public static void MaximumNonConsecutiveSubset() {
+        @SuppressWarnings("resource")
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter number of elements");
+        int n = s.nextInt();
+
+        int[] arr = new int[n];
+        int maxInclude = arr[0];
+        int maxExclude = 0;
+        System.out.println("Enter Array");
+        for (int i = 0; i < n; i++) {
+            arr[i] = s.nextInt();
+        }
+        for (int i = 1; i < n; i++) {
+            int newMaxInclude = maxExclude + arr[i];
+            int newMaxExclude = Math.max(maxExclude, maxInclude);
+
+            maxExclude = newMaxExclude;
+            maxInclude = newMaxInclude;
+        }
+        System.out.print("Maximum value-> ");
+        System.out.println(Math.max(maxExclude, maxInclude));
+
+    }
+
+    public static void PaintHouseManyColors() {
+        @SuppressWarnings("resource")
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter number of houses");
+        int n = s.nextInt();
+        System.out.println("Enter number of colors");
+        int m = s.nextInt();
+        System.out.println("Enter painting cost");
+        int[][] colors = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                colors[i][j] = s.nextInt();
+            }
+        }
+        int[][] dp = new int[n][m];
+        int least = Integer.MAX_VALUE;
+        int sleast = Integer.MIN_VALUE;
+        for (int j = 0; j < m; j++) {
+            dp[0][j] = colors[0][j];
+            if (dp[0][j] < least) {
+                sleast = least;
+                least = dp[0][j];
+            } else if (dp[0][j] < sleast) {
+                sleast = dp[0][j];
+            }
+        }
+
+        for (int i = 1; i < n; i++) {
+            int nleast = Integer.MAX_VALUE;
+            int nsleast = Integer.MAX_VALUE;
+            for (int j = 0; j < m; j++) {
+                if (dp[i - 1][j] == least) {
+                    dp[i][j] = sleast + colors[i][j];
+                } else {
+                    dp[i][j] = least + colors[i][j];
+                }
+                if (dp[i][j] < nleast) {
+                    nsleast = nleast;
+                    nleast = dp[i][j];
+                } else if (dp[i][j] < nsleast) {
+                    nsleast = dp[i][j];
+                }
+            }
+            least = nleast;
+            sleast = nsleast;
+
+        }
+        System.out.print("Minimum cost to paint -> ");
+        System.out.println(least);
+
+    }
+
+    public static void paintFence() {
+        @SuppressWarnings("resource")
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter number of fence");
+        int n = s.nextInt();
+        System.out.println("Enter number of colors");
+        int k = s.nextInt();
+        int osame = k * 1;
+        int odiff = k * (k - 1);
+        int total = osame + odiff;
+        for (int i = 2; i < n; i++) {
+            osame = odiff;
+            odiff = total * (k - 1);
+            total = osame + odiff;
+        }
+        System.out.println("Possilbe number of ways to paint -> ");
+        System.out.println(total);
+    }
 }

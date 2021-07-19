@@ -28,6 +28,9 @@ public class DPCaller {
 		// DPIncludeExclude.ArrangeBuilding();
 		// DPIncludeExclude.DecodeWays();
 		// DPIncludeExclude.subSequenceABC();
+		// DPIncludeExclude.MaximumNonConsecutiveSubset();
+		// DPIncludeExclude.PaintHouseManyColors();
+		DPIncludeExclude.paintFence();
 
 	}
 
